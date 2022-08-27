@@ -1,0 +1,6 @@
+---
+- src: andrewrothstein.kubectl
+- src: andrewrothstein.go-dev
+- src: andrewrothstein.kubeseal
+- src: andrewrothstein.flux
+- src: danielpieper.helm

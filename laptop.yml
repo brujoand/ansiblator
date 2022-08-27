@@ -1,0 +1,22 @@
+---
+- name: Install system packages
+  hosts: localhost
+  connection: local
+  vars:
+    # https://stackoverflow.com/questions/63242221/use-ansible-package-module-to-work-with-apt-and-homebrew
+    darwin_os: "{{ True if ansible_os_family == 'Darwin' else False }}"
+    should_be_root: "{{ False if ansible_os_family == 'Darwin' else True }}"
+  tasks:
+    - include_role:
+        name: osx
+      when: darwin_os == True
+    - include_role:
+        name: linux
+      when: darwin_os == False
+    - include_role:
+        name: devops
+        apply:
+          become: "{{ should_be_root }}"
+- name: Kubernetes playbook
+  import_playbook: kubernetes.yml
+

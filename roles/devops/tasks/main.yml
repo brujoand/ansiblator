@@ -1,0 +1,36 @@
+---
+- name: Install system packages
+  tasks:
+    - name: Basic devops packages installed
+      become: "{{ should_be_root }}"
+      package:
+        name:
+          - fzf
+          - git
+          - git-lfs
+          - gnupg
+          - graphviz
+          - httpie
+          - hugo
+          - jq
+          - nmap
+          - nvim
+          - pygments
+          - shellcheck
+          - shfmt
+          - socat
+          - tmux
+          - yamllint
+          - z
+        state: present
+- name: Setup dotfiles
+  become: false
+  tasks:
+    - name: Create src directory
+      file:
+        path: $HOME/src
+        state: directory
+    - name: Checkout dotfiles
+      ansible.builtin.git:
+        repo: 'https://github.com/brujoand/dotfiles'
+        dest: $HOME/src/dotfiles

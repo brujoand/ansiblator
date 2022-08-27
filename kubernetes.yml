@@ -1,0 +1,10 @@
+---
+- name: Install system packages
+  hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - andrewrothstein.kubectl
+    - andrewrothstein.kubeseal
+    - andrewrothstein.flux
+    - danielpieper.helm

@@ -1,0 +1,14 @@
+---
+- name: Install Linux specific packages
+  become: True
+  block:
+    - name: Linux system packages installed
+      package:
+        name:
+          - bash
+          - bash-completion
+          - bc
+          - firefox
+          - wireguard
+        state: present
+
