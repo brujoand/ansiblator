@@ -1,0 +1,14 @@
+---
+- name: Install system packages
+  become: "{{ should_be_root }}"
+  block:
+    - name: Basic unix tools are present
+      package:
+        name:
+          - coreutils
+          - dateutils
+          - findutils
+          - moreutils
+          - openssh
+          - tree
+        state: present
