@@ -11,4 +11,3 @@
           - firefox
           - wireguard
         state: present
-
